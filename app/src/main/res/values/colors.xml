@@ -15,4 +15,21 @@
     <color name="ptOneColorOne">#ff4e00</color>
     <color name="ptOneColorTwo">#ff9c00</color>
     <color name="ptOneColorThree">#fffa23</color>
+
+    <color name="ptTwoColorOne">#e0207e</color>
+    <color name="ptTwoColorTwo">#ff0000</color>
+    <color name="ptTwoColorThree">#ff6600</color>
+    <color name="ptTwoColorFour">#ff8000</color>
+
+    <color name="ptThreeColorOne">#c700ff</color>
+    <color name="ptThreeColorTwo">#fb03d6</color>
+    <color name="ptThreeColorThree">#ff003b</color>
+
+    <color name="ptFourColorOne">#5851ff</color>
+    <color name="ptFourColorTwo">#cf24ff</color>
+    <color name="ptFourColorThree">#ff00d2</color>
+
+    <color name="ptFiveColorOne">#01c7fe</color>
+    <color name="ptFiveColorTwo">#4ea1ff</color>
+    <color name="ptFiveColorThree">#0045ff</color>
 </resources>
