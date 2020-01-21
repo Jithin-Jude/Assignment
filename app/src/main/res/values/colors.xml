@@ -3,4 +3,11 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="white">#ffffff</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="background">#002F31</color>
+    <color name="buttonColor">#0bd785</color>
+    <color name="buttonColorPressed">#05ab68</color>
+    <color name="pathColor">#b7b7b2</color>
 </resources>
