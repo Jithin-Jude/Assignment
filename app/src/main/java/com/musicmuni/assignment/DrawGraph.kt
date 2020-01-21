@@ -155,15 +155,15 @@ class DrawGraph(context: Context): View(context) {
             }
 
             if(index == 0){
-                canvas.drawCircle(realX, realY, 20f, dataPointOneFillPaint)
+                canvas.drawCircle(realX+20, realY+20, 20f, dataPointOneFillPaint)
             }else if(index == 1){
-                canvas.drawCircle(realX, realY, 20f, dataPointTwoFillPaint)
+                canvas.drawCircle(realX, realY+20, 20f, dataPointTwoFillPaint)
             }else if(index == 2){
-                canvas.drawCircle(realX, realY, 20f, dataPointThreeFillPaint)
+                canvas.drawCircle(realX, realY+20, 20f, dataPointThreeFillPaint)
             }else if(index == 3){
-                canvas.drawCircle(realX, realY, 20f, dataPointFourFillPaint)
+                canvas.drawCircle(realX, realY+20, 20f, dataPointFourFillPaint)
             }else if(index == 4){
-                canvas.drawCircle(realX, realY, 20f, dataPointFiveFillPaint)
+                canvas.drawCircle(realX-20, realY+20, 20f, dataPointFiveFillPaint)
             }
             //canvas.drawCircle(realX, realY, 7f, dataPointPaint)
         }
