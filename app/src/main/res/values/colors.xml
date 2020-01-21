@@ -10,4 +10,9 @@
     <color name="buttonColor">#0bd785</color>
     <color name="buttonColorPressed">#05ab68</color>
     <color name="pathColor">#b7b7b2</color>
+
+
+    <color name="ptOneColorOne">#ff4e00</color>
+    <color name="ptOneColorTwo">#ff9c00</color>
+    <color name="ptOneColorThree">#fffa23</color>
 </resources>

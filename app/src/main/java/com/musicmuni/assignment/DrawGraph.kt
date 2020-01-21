@@ -3,6 +3,7 @@ package com.musicmuni.assignment
 import android.content.Context
 import android.graphics.*
 import android.view.View
+import androidx.core.content.ContextCompat
 
 /**
  * Created by <Jithin/Jude> on 21,January,2020.
@@ -23,16 +24,19 @@ class DrawGraph(context: Context): View(context) {
         style = Paint.Style.STROKE
     }
 
-    private val dataPointFillPaint = Paint().apply {
-        shader = LinearGradient(
-            0f,
-            0f,
-            0f,
-            height.toFloat(),
-            Color.GREEN,
-            Color.YELLOW,
-            Shader.TileMode.MIRROR
-        )
+    private val positions = null
+    private val colors = intArrayOf(
+        ContextCompat.getColor(context,
+            R.color.ptOneColorOne),
+        ContextCompat.getColor(context,
+            R.color.ptOneColorTwo),
+        ContextCompat.getColor(context,
+            R.color.ptOneColorThree))
+
+    private val dataPointOneFillPaint = Paint()
+
+    val dataPointNormalFillPaint = Paint().apply {
+        color = Color.RED
     }
 
     private val dataPointLinePaint = Paint().apply {
@@ -44,6 +48,18 @@ class DrawGraph(context: Context): View(context) {
     private val axisLinePaint = Paint().apply {
         color = Color.RED
         strokeWidth = 10f
+    }
+
+    override fun onSizeChanged(w: Int, h: Int, oldW: Int, oldH: Int) {
+        dataPointOneFillPaint.shader = LinearGradient(
+            0f,
+            0f,
+            0f,
+            height.toFloat(),
+            colors,
+            positions,
+            Shader.TileMode.MIRROR
+        )
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -62,7 +78,11 @@ class DrawGraph(context: Context): View(context) {
                 canvas.drawLine(startX, startY, endX, endY, dataPointLinePaint)
             }
 
-            canvas.drawCircle(realX, realY, 20f, dataPointFillPaint)
+            if(index == 0){
+                canvas.drawCircle(realX, realY, 20f, dataPointOneFillPaint)
+            }else{
+                canvas.drawCircle(realX, realY, 20f, dataPointNormalFillPaint)
+            }
             //canvas.drawCircle(realX, realY, 7f, dataPointPaint)
         }
 
