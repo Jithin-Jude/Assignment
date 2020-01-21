@@ -12,7 +12,9 @@ class ScoreActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val myView = GridView(this)
+        graphBackground.addView(myView)
 
-        graph_background.addView(myView)
+        val myViewTest = DrawGraph(this)
+        graphView.addView(myViewTest)
     }
 }
