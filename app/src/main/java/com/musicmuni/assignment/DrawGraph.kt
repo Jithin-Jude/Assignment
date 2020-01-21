@@ -3,59 +3,82 @@ package com.musicmuni.assignment
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
-import android.util.AttributeSet
-import android.util.TypedValue
+import android.graphics.Paint
 import android.view.View
-import androidx.annotation.NonNull
-import androidx.annotation.Nullable
 
 /**
  * Created by <Jithin/Jude> on 21,January,2020.
  * jithin.jude68@gmail.com
  */
 
-class DrawGraph @JvmOverloads constructor(@NonNull context: Context):
-    View(context) {
-    //number of row and column
-    internal var horizontalGridCount = 10
-    private val horiz:Drawable
-    private val vert: Drawable
-    private var width:Float = 0.toFloat()
-    init{
-        horiz = ColorDrawable(Color.parseColor("#ff0000"))
-        horiz.setAlpha(160)
-        vert = ColorDrawable(Color.parseColor("#ff0000"))
-        vert.setAlpha(160)
-        width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0.9f, context
-            .getResources().getDisplayMetrics())
+class DrawGraph(context: Context): View(context) {
+
+    private val dataSet = mutableListOf<DataPoint>()
+    private var xMin = 0
+    private var xMax = 0
+    private var yMin = 0
+    private var yMax = 0
+
+    private val dataPointPaint = Paint().apply {
+        color = Color.BLUE
+        strokeWidth = 7f
+        style = Paint.Style.STROKE
     }
-    override fun onLayout(changed:Boolean, left:Int, top:Int, right:Int, bottom:Int) {
-        super.onLayout(changed, left, top, right, bottom)
-        horiz.setBounds(left, 0, right, width.toInt())
-        vert.setBounds(0, top, width.toInt(), bottom)
+
+    private val dataPointFillPaint = Paint().apply {
+        color = Color.WHITE
     }
-    private fun getLinePosition(lineNumber:Int):Float {
-        val lineCount = horizontalGridCount
-        return (1f / (lineCount + 1)) * (lineNumber + 1f)
+
+    private val dataPointLinePaint = Paint().apply {
+        color = Color.parseColor("#b7b7b2")
+        strokeWidth = 7f
+        isAntiAlias = true
     }
+
+    private val axisLinePaint = Paint().apply {
+        color = Color.RED
+        strokeWidth = 10f
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        // drawTask.start();
-        val count = horizontalGridCount
-        for (n in 0 until count)
-        {
-            val pos = getLinePosition(n)
-            // Draw horizontal line
-            canvas.translate(0f, pos * getHeight())
-            horiz.draw(canvas)
-            canvas.translate(0f, -pos * getHeight())
-            // Draw vertical line
-            canvas.translate(pos * getWidth(), 0f)
-            vert.draw(canvas)
-            canvas.translate(-pos * getWidth(), 0f)
+
+        dataSet.forEachIndexed { index, currentDataPoint ->
+            val realX = currentDataPoint.xVal.toRealX()
+            val realY = currentDataPoint.yVal.toRealY()
+
+            if (index < dataSet.size - 1) {
+                val nextDataPoint = dataSet[index + 1]
+                val startX = currentDataPoint.xVal.toRealX()
+                val startY = currentDataPoint.yVal.toRealY()
+                val endX = nextDataPoint.xVal.toRealX()
+                val endY = nextDataPoint.yVal.toRealY()
+                canvas.drawLine(startX, startY, endX, endY, dataPointLinePaint)
+            }
+
+            canvas.drawCircle(realX, realY, 7f, dataPointFillPaint)
+            canvas.drawCircle(realX, realY, 7f, dataPointPaint)
         }
-        //drawTask.end(count);
+
+        //canvas.drawLine(0f, 0f, 0f, height.toFloat(), axisLinePaint)
+        //canvas.drawLine(0f, height.toFloat(), width.toFloat(), height.toFloat(), axisLinePaint)
     }
+
+    fun setData(newDataSet: List<DataPoint>) {
+        xMin = newDataSet.minBy { it.xVal }?.xVal ?: 0
+        xMax = newDataSet.maxBy { it.xVal }?.xVal ?: 0
+        yMin = newDataSet.minBy { it.yVal }?.yVal ?: 0
+        yMax = newDataSet.maxBy { it.yVal }?.yVal ?: 0
+        dataSet.clear()
+        dataSet.addAll(newDataSet)
+        invalidate()
+    }
+
+    private fun Int.toRealX() = toFloat() / xMax * width
+    private fun Int.toRealY() = toFloat() / yMax * height
 }
+
+data class DataPoint(
+    val xVal: Int,
+    val yVal: Int
+)
