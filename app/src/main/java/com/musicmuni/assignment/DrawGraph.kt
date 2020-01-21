@@ -1,9 +1,7 @@
 package com.musicmuni.assignment
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
+import android.graphics.*
 import android.view.View
 
 /**
@@ -26,7 +24,15 @@ class DrawGraph(context: Context): View(context) {
     }
 
     private val dataPointFillPaint = Paint().apply {
-        color = Color.WHITE
+        shader = LinearGradient(
+            0f,
+            0f,
+            0f,
+            height.toFloat(),
+            Color.GREEN,
+            Color.YELLOW,
+            Shader.TileMode.MIRROR
+        )
     }
 
     private val dataPointLinePaint = Paint().apply {
@@ -56,8 +62,8 @@ class DrawGraph(context: Context): View(context) {
                 canvas.drawLine(startX, startY, endX, endY, dataPointLinePaint)
             }
 
-            canvas.drawCircle(realX, realY, 7f, dataPointFillPaint)
-            canvas.drawCircle(realX, realY, 7f, dataPointPaint)
+            canvas.drawCircle(realX, realY, 20f, dataPointFillPaint)
+            //canvas.drawCircle(realX, realY, 7f, dataPointPaint)
         }
 
         //canvas.drawLine(0f, 0f, 0f, height.toFloat(), axisLinePaint)
