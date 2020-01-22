@@ -24,7 +24,7 @@ class ScoreActivity : AppCompatActivity() {
 
     private fun generateRandomDataPoints(): List<DataPoint> {
 
-        val list = listOf(2, 12, 13, 49, 34)
+        val list = listOf(100-10, 100-20, 100-30, 100-40, 100-80)
 
         return (0..4).map {
             DataPoint(it, list[it])
