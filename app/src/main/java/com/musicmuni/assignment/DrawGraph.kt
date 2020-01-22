@@ -15,6 +15,8 @@ import androidx.core.content.res.ResourcesCompat
 
 class DrawGraph(context: Context): View(context) {
 
+    private val padding = 20
+
     private val dataSet = mutableListOf<DataPoint>()
     private var xMin = 0
     private var xMax = 0
@@ -159,25 +161,25 @@ class DrawGraph(context: Context): View(context) {
 
                 if(1000-startY < 1000-endY){
                     if(index == 0){
-                        drawCurvedArrow(startX+20, startY-20, endX, endY, -30,6f,canvas)
+                        drawCurvedArrow(startX+padding, startY-padding, endX, endY, -30,6f,canvas)
                     }else if(index == 3){
-                        drawCurvedArrow(startX, startY, endX-20, endY+20, -30,6f,canvas)
+                        drawCurvedArrow(startX, startY, endX-padding, endY+padding, -30,6f,canvas)
                     } else{
                         drawCurvedArrow(startX, startY, endX, endY, -30,6f,canvas)
                     }
                 }else if(1000-startY > 1000-endY){
                     if(index == 0){
-                        drawCurvedArrow(startX+20, startY-20, endX, endY, 30,6f,canvas)
+                        drawCurvedArrow(startX+padding, startY-padding, endX, endY, 30,6f,canvas)
                     }else if(index == 4){
-                        drawCurvedArrow(startX, startY, endX+20, endY-20, 30,6f,canvas)
+                        drawCurvedArrow(startX, startY, endX+padding, endY-padding, 30,6f,canvas)
                     } else{
                         drawCurvedArrow(startX, startY, endX, endY, 30,6f,canvas)
                     }
                 }else{
                     if(index == 0){
-                        canvas.drawLine(startX+20, startY-20, endX, endY, dataPointLinePaint)
+                        canvas.drawLine(startX+padding, startY-padding, endX, endY, dataPointLinePaint)
                     }else if(index == 4){
-                        canvas.drawLine(startX, startY, endX+20, endY-20, dataPointLinePaint)
+                        canvas.drawLine(startX, startY, endX+padding, endY-padding, dataPointLinePaint)
                     } else{
                         canvas.drawLine(startX, startY, endX, endY, dataPointLinePaint)
                     }
@@ -185,27 +187,27 @@ class DrawGraph(context: Context): View(context) {
             }
 
             if(index == 0){
-                canvas.drawCircle(realX+20, realY-20, 20f, dataPointOneFillPaint)
+                canvas.drawCircle(realX+padding, realY-padding, 20f, dataPointOneFillPaint)
                 drawText(canvas,realX,realY-70, "10",
                     ContextCompat.getColor(context,
                         R.color.greenGreyWritings))
             }else if(index == 1){
                 canvas.drawCircle(realX, realY, 20f, dataPointTwoFillPaint)
-                drawText(canvas,realX-20,realY-70, "20",
+                drawText(canvas,realX-padding,realY-70, "20",
                     ContextCompat.getColor(context,
                         R.color.greenGreyWritings))
             }else if(index == 2){
                 canvas.drawCircle(realX, realY, 20f, dataPointThreeFillPaint)
-                drawText(canvas,realX-20,realY-70, "30",
+                drawText(canvas,realX-padding,realY-70, "30",
                     ContextCompat.getColor(context,
                         R.color.greenGreyWritings))
             }else if(index == 3){
                 canvas.drawCircle(realX, realY, 20f, dataPointFourFillPaint)
-                drawText(canvas,realX-20,realY-70, "40",
+                drawText(canvas,realX-padding,realY-70, "40",
                     ContextCompat.getColor(context,
                         R.color.greenGreyWritings))
             }else if(index == 4){
-                canvas.drawCircle(realX-20, realY+20, 20f, dataPointFiveFillPaint)
+                canvas.drawCircle(realX-padding, realY+20, 20f, dataPointFiveFillPaint)
                 drawText(canvas,realX-60,realY-30, "80",
                     ContextCompat.getColor(context,
                         R.color.white))
