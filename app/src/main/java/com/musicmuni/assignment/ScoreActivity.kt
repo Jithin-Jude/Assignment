@@ -8,6 +8,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class ScoreActivity : AppCompatActivity() {
 
+    var scoreOne = 0
+    var scoreTwo = 0
+    var scoreThree = 0
+    var scoreFour = 0
+    var scoreFive = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -15,6 +21,12 @@ class ScoreActivity : AppCompatActivity() {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_main)
+
+        scoreOne = intent.getStringExtra("score_one")!!.toInt()
+        scoreTwo = intent.getStringExtra("score_two")!!.toInt()
+        scoreThree = intent.getStringExtra("score_three")!!.toInt()
+        scoreFour = intent.getStringExtra("score_four")!!.toInt()
+        scoreFive = intent.getStringExtra("score_five")!!.toInt()
 
         val gridLines = GridView(this)
         graphBackground.addView(gridLines)
@@ -27,7 +39,7 @@ class ScoreActivity : AppCompatActivity() {
 
     private fun getDataPoints(): List<DataPoint> {
 
-        val list = listOf(100-10, 100-20, 100-30, 100-40, 100-80)
+        val list = listOf(100-scoreOne, 100-scoreTwo, 100-scoreThree, 100-scoreFour, 100-scoreFive)
 
         return (0..4).map {
             DataPoint(it, list[it])
