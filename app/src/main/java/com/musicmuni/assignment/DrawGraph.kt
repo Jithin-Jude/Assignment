@@ -2,6 +2,7 @@ package com.musicmuni.assignment
 
 import android.content.Context
 import android.graphics.*
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 
@@ -154,16 +155,18 @@ class DrawGraph(context: Context): View(context) {
                 canvas.drawLine(startX, startY, endX, endY, dataPointLinePaint)
             }
 
+            Log.d("FINAL_VALUE","FINAL VALUE====================================: "+realX+","+realY)
+
             if(index == 0){
-                canvas.drawCircle(realX+20, realY+20, 20f, dataPointOneFillPaint)
+                canvas.drawCircle(realX, realY, 20f, dataPointOneFillPaint)
             }else if(index == 1){
-                canvas.drawCircle(realX, realY+20, 20f, dataPointTwoFillPaint)
+                canvas.drawCircle(realX, realY, 20f, dataPointTwoFillPaint)
             }else if(index == 2){
-                canvas.drawCircle(realX, realY+20, 20f, dataPointThreeFillPaint)
+                canvas.drawCircle(realX, realY, 20f, dataPointThreeFillPaint)
             }else if(index == 3){
-                canvas.drawCircle(realX, realY+20, 20f, dataPointFourFillPaint)
+                canvas.drawCircle(realX, realY, 20f, dataPointFourFillPaint)
             }else if(index == 4){
-                canvas.drawCircle(realX-20, realY+20, 20f, dataPointFiveFillPaint)
+                canvas.drawCircle(realX, realY, 20f, dataPointFiveFillPaint)
             }
             //canvas.drawCircle(realX, realY, 7f, dataPointPaint)
         }
@@ -173,6 +176,11 @@ class DrawGraph(context: Context): View(context) {
     }
 
     fun setData(newDataSet: List<DataPoint>) {
+
+        for (item in newDataSet){
+            Log.d("GENERATED_VALUE","GENERATED VALUE====================================: "+item.xVal+","+item.yVal)
+        }
+
         xMin = newDataSet.minBy { it.xVal }?.xVal ?: 0
         xMax = newDataSet.maxBy { it.xVal }?.xVal ?: 0
         yMin = newDataSet.minBy { it.yVal }?.yVal ?: 0

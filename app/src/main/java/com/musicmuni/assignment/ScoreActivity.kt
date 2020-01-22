@@ -17,24 +17,17 @@ class ScoreActivity : AppCompatActivity() {
         graphBackground.addView(myView)
 
 
-
-        val dataPointList: List<DataPoint>
-        dataPointList = ArrayList()
-        dataPointList.toMutableList().add(DataPoint(1,1))
-        dataPointList.toMutableList().add(DataPoint(10,10))
-        dataPointList.toMutableList().add(DataPoint(100,100))
-        dataPointList.toMutableList().add(DataPoint(20,20))
-        dataPointList.toMutableList().add(DataPoint(25,25))
-
         val myViewTest = DrawGraph(this)
         myViewTest.setData(generateRandomDataPoints())
         graphView.addView(myViewTest)
     }
 
     private fun generateRandomDataPoints(): List<DataPoint> {
-        val random = Random()
+
+        val list = listOf(2, 12, 13, 49, 34)
+
         return (0..4).map {
-            DataPoint(it, random.nextInt(50) + 1)
+            DataPoint(it, list[it])
         }
     }
 }
