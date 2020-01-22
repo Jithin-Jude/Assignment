@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Assignment</string>
+    <string name="score_one">Score One</string>
+    <string name="score_two">Score Two</string>
+    <string name="score_three">Score Three</string>
+    <string name="score_four">Score Four</string>
+    <string name="score_five">Score Five</string>
+    <string name="show_graph">Show Graph</string>
+    <string name="input_scores">Input Scores</string>
+    <string name="sing_again">Sing again</string>
+    <string name="continue_btn">Continue</string>
+    <string name="you_showed_100_improvement">You showed 100% improvement!</string>
 </resources>
