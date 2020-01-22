@@ -29,7 +29,7 @@ class GridView @JvmOverloads constructor(@NonNull context: Context):
         vert = ColorDrawable(Color.parseColor("#075e55"))
         vert.setAlpha(160)
         width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0.9f, context
-            .getResources().getDisplayMetrics())
+            .resources.displayMetrics)
     }
     override fun onLayout(changed:Boolean, left:Int, top:Int, right:Int, bottom:Int) {
         super.onLayout(changed, left, top, right, bottom)
@@ -48,9 +48,9 @@ class GridView @JvmOverloads constructor(@NonNull context: Context):
         {
             val pos = getLinePosition(n)
             // Draw horizontal line
-            canvas.translate(0f, pos * getHeight())
+            canvas.translate(0f, pos * height)
             horiz.draw(canvas)
-            canvas.translate(0f, -pos * getHeight())
+            canvas.translate(0f, -pos * height)
             // Draw vertical line
             canvas.translate(pos * getWidth(), 0f)
             vert.draw(canvas)
