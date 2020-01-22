@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 
+
 /**
  * Created by <Jithin/Jude> on 21,January,2020.
  * jithin.jude68@gmail.com
@@ -152,7 +153,6 @@ class DrawGraph(context: Context): View(context) {
                 val startY = currentDataPoint.yVal.toRealY()
                 val endX = nextDataPoint.xVal.toRealX()
                 val endY = nextDataPoint.yVal.toRealY()
-                //canvas.drawLine(startX, startY, endX, endY, dataPointLinePaint)
 
                 Log.d("FINAL_VALUE","FINAL VALUE====================================: "+startY+","+endY)
 
@@ -167,16 +167,20 @@ class DrawGraph(context: Context): View(context) {
 
             if(index == 0){
                 canvas.drawCircle(realX, realY, 20f, dataPointOneFillPaint)
+                drawText(canvas,realX-20,realY-70, "10")
             }else if(index == 1){
                 canvas.drawCircle(realX, realY, 20f, dataPointTwoFillPaint)
+                drawText(canvas,realX-20,realY-70, "20")
             }else if(index == 2){
                 canvas.drawCircle(realX, realY, 20f, dataPointThreeFillPaint)
+                drawText(canvas,realX-20,realY-70, "30")
             }else if(index == 3){
                 canvas.drawCircle(realX, realY, 20f, dataPointFourFillPaint)
+                drawText(canvas,realX-20,realY-70, "40")
             }else if(index == 4){
                 canvas.drawCircle(realX, realY, 20f, dataPointFiveFillPaint)
+                drawText(canvas,realX-20,realY-70, "80")
             }
-            //canvas.drawCircle(realX, realY, 7f, dataPointPaint)
         }
 
         //canvas.drawLine(0f, 0f, 0f, height.toFloat(), axisLinePaint)
@@ -202,6 +206,13 @@ class DrawGraph(context: Context): View(context) {
         path.moveTo(x1, y1)
         path.cubicTo(x1, y1, pointX, pointY, x2, y2)
         canvas.drawPath(path, paint)
+    }
+
+    fun drawText(canvas: Canvas, x: Float, y: Float, text: String){
+        val paint = Paint()
+        paint.color = Color.WHITE
+        paint.setTextSize(48f)
+        canvas.drawText(text, x, y, paint)
     }
 
     fun setData(newDataSet: List<DataPoint>) {
