@@ -95,6 +95,7 @@
         android:background="@drawable/custom_stroke_button"
         android:fontFamily="@font/nunito"
         android:text="@string/show_graph"
+        android:contentDescription="@string/show_graph"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/scoreFive"
