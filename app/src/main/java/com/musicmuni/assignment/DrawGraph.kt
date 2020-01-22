@@ -152,10 +152,18 @@ class DrawGraph(context: Context): View(context) {
                 val startY = currentDataPoint.yVal.toRealY()
                 val endX = nextDataPoint.xVal.toRealX()
                 val endY = nextDataPoint.yVal.toRealY()
-                canvas.drawLine(startX, startY, endX, endY, dataPointLinePaint)
-            }
+                //canvas.drawLine(startX, startY, endX, endY, dataPointLinePaint)
 
-            Log.d("FINAL_VALUE","FINAL VALUE====================================: "+realX+","+realY)
+                Log.d("FINAL_VALUE","FINAL VALUE====================================: "+startY+","+endY)
+
+                if(1000-startY < 1000-endY){
+                    drawCurvedArrow(startX, startY, endX, endY, -30,6f,canvas)
+                }else if(1000-startY > 1000-endY){
+                    drawCurvedArrow(startX, startY, endX, endY, 30,6f,canvas)
+                }else{
+                    canvas.drawLine(startX, startY, endX, endY, dataPointLinePaint)
+                }
+            }
 
             if(index == 0){
                 canvas.drawCircle(realX, realY, 20f, dataPointOneFillPaint)
@@ -173,6 +181,27 @@ class DrawGraph(context: Context): View(context) {
 
         //canvas.drawLine(0f, 0f, 0f, height.toFloat(), axisLinePaint)
         //canvas.drawLine(0f, height.toFloat(), width.toFloat(), height.toFloat(), axisLinePaint)
+    }
+
+    fun drawCurvedArrow(x1:Float, y1:Float, x2:Float, y2:Float, curveRadius:Int, lineWidth:Float, canvas: Canvas) {
+        val paint = Paint()
+        paint.setAntiAlias(true)
+        paint.setStyle(Paint.Style.STROKE)
+        paint.setStrokeWidth(lineWidth)
+        paint.setColor(ContextCompat.getColor(context,
+            R.color.pathColor))
+        val path = Path()
+        val midX = x1 + ((x2 - x1) / 2)
+        val midY = y1 + ((y2 - y1) / 2)
+        val xDiff = (midX - x1).toFloat()
+        val yDiff = (midY - y1).toFloat()
+        val angle = (Math.atan2(yDiff.toDouble(), xDiff.toDouble()) * (180 / Math.PI)) - 90
+        val angleRadians = Math.toRadians(angle)
+        val pointX = (midX + curveRadius * Math.cos(angleRadians)).toFloat()
+        val pointY = (midY + curveRadius * Math.sin(angleRadians)).toFloat()
+        path.moveTo(x1, y1)
+        path.cubicTo(x1, y1, pointX, pointY, x2, y2)
+        canvas.drawPath(path, paint)
     }
 
     fun setData(newDataSet: List<DataPoint>) {
