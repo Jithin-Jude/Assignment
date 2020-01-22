@@ -15,6 +15,12 @@ import androidx.core.content.res.ResourcesCompat
 
 class DrawGraph(context: Context): View(context) {
 
+    var scoreOne = 0
+    var scoreTwo = 0
+    var scoreThree = 0
+    var scoreFour = 0
+    var scoreFive = 0
+
     private val padding = 20
 
     private val dataSet = mutableListOf<DataPoint>()
@@ -197,28 +203,28 @@ class DrawGraph(context: Context): View(context) {
 
             if(index == 0){
                 canvas.drawCircle(realX+padding, realY-padding, 20f, dataPointOneFillPaint)
-                drawText(canvas,realX,realY-70, "10",
+                drawText(canvas,realX,realY-70, scoreOne.toString(),
                     ContextCompat.getColor(context,
                         R.color.greenGreyWritings), 48f)
             }else if(index == 1){
                 canvas.drawCircle(realX, realY, 20f, dataPointTwoFillPaint)
-                drawText(canvas,realX-padding,realY-70, "20",
+                drawText(canvas,realX-padding,realY-70, scoreTwo.toString(),
                     ContextCompat.getColor(context,
                         R.color.greenGreyWritings), 48f)
             }else if(index == 2){
                 canvas.drawCircle(realX, realY, 20f, dataPointThreeFillPaint)
-                drawText(canvas,realX-padding,realY-70, "30",
+                drawText(canvas,realX-padding,realY-70, scoreThree.toString(),
                     ContextCompat.getColor(context,
                         R.color.greenGreyWritings), 48f)
             }else if(index == 3){
                 canvas.drawCircle(realX, realY, 20f, dataPointFourFillPaint)
-                drawText(canvas,realX-padding,realY-70, "40",
+                drawText(canvas,realX-padding,realY-70, scoreFour.toString(),
                     ContextCompat.getColor(context,
                         R.color.greenGreyWritings), 48f)
             }else if(index == 4){
                 canvas.drawCircle(realX-40, realY+20, 20f, dataPointFiveFillPaint)
                 canvas.drawCircle(realX-40, realY+20, 35f, dataPointFiveStrokePaint)
-                drawText(canvas,realX-70,realY-50, "80",
+                drawText(canvas,realX-70,realY-50, scoreFive.toString(),
                     ContextCompat.getColor(context,
                         R.color.white), 54f)
             }
@@ -259,9 +265,17 @@ class DrawGraph(context: Context): View(context) {
 
     fun setData(newDataSet: List<DataPoint>) {
 
+
         for (item in newDataSet){
-            Log.d("GENERATED_VALUE","GENERATED VALUE====================================: "+item.xVal+","+item.yVal)
+            Log.d("GENERATED_VALUE","GENERATED VALUE===========" +
+                    "=========================: "+item.xVal+","+item.yVal)
         }
+
+        scoreOne = 100 - newDataSet[0].yVal
+        scoreTwo = 100 - newDataSet[1].yVal
+        scoreThree = 100 - newDataSet[2].yVal
+        scoreFour = 100 - newDataSet[3].yVal
+        scoreFive = 100 - newDataSet[4].yVal
 
         xMin = newDataSet.minBy { it.xVal }?.xVal ?: 0
         xMax = newDataSet.maxBy { it.xVal }?.xVal ?: 0
