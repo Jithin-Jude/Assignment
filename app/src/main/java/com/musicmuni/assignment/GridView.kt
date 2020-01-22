@@ -42,7 +42,7 @@ class GridView @JvmOverloads constructor(@NonNull context: Context):
     }
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        // drawTask.start();
+
         val count = horizontalGridCount
         for (n in 0 until count)
         {
@@ -56,6 +56,6 @@ class GridView @JvmOverloads constructor(@NonNull context: Context):
             vert.draw(canvas)
             canvas.translate(-pos * getWidth(), 0f)
         }
-        //drawTask.end(count);
+
     }
 }

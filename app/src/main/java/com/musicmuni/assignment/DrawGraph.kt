@@ -166,37 +166,48 @@ class DrawGraph(context: Context): View(context) {
                 val endX = nextDataPoint.xVal.toRealX()
                 val endY = nextDataPoint.yVal.toRealY()
 
-                //Log.d("FINAL_VALUE","FINAL VALUE====================================: "+startY+","+endY)
+                //Log.d("FINAL_VALUE","FINAL VALUE====================
+                // ================: "+startY+","+endY)
 
                 if(1000-startY < 1000-endY){
                     if(index == 0){
-                        drawCurvedArrow(startX+padding, startY-padding, endX, endY-padding, -30,6f,canvas)
+                        drawCurvedArrow(startX+padding, startY-padding, endX,
+                            endY-padding, -30,6f,canvas)
                     }else if(index == 3){
-                        drawCurvedArrow(startX, startY-padding, endX-40, endY-padding, -30,6f,canvas)
+                        drawCurvedArrow(startX, startY-padding, endX-40,
+                            endY-padding, -30,6f,canvas)
                     } else{
-                        drawCurvedArrow(startX, startY-padding, endX, endY-padding, -30,6f,canvas)
+                        drawCurvedArrow(startX, startY-padding, endX, endY-padding,
+                            -30,6f,canvas)
                     }
                 }else if(1000-startY > 1000-endY){
                     if(index == 0){
-                        drawCurvedArrow(startX+padding, startY-padding, endX, endY-padding, 30,6f,canvas)
+                        drawCurvedArrow(startX+padding, startY-padding, endX,
+                            endY-padding, 30,6f,canvas)
                     }else if(index == 4){
-                        drawCurvedArrow(startX, startY-padding, endX+padding, endY-padding, 30,6f,canvas)
+                        drawCurvedArrow(startX, startY-padding, endX+padding,
+                            endY-padding, 30,6f,canvas)
                     } else{
-                        drawCurvedArrow(startX, startY-padding, endX, endY-padding, 30,6f,canvas)
+                        drawCurvedArrow(startX, startY-padding, endX, endY-padding,
+                            30,6f,canvas)
                     }
                 }else{
                     if(index == 0){
-                        canvas.drawLine(startX+padding, startY-padding, endX, endY-padding, dataPointLinePaint)
+                        canvas.drawLine(startX+padding, startY-padding, endX,
+                            endY-padding, dataPointLinePaint)
                     }else if(index == 4){
-                        canvas.drawLine(startX, startY-padding, endX+padding, endY-padding, dataPointLinePaint)
+                        canvas.drawLine(startX, startY-padding, endX+padding,
+                            endY-padding, dataPointLinePaint)
                     } else{
-                        canvas.drawLine(startX, startY-padding, endX, endY-padding, dataPointLinePaint)
+                        canvas.drawLine(startX, startY-padding, endX, endY-padding,
+                            dataPointLinePaint)
                     }
                 }
             }
 
             if(index == 0){
-                canvas.drawCircle(realX+padding, realY-padding, 20f, dataPointOneFillPaint)
+                canvas.drawCircle(realX+padding, realY-padding, 20f,
+                    dataPointOneFillPaint)
                 drawText(canvas,realX,realY-70, scoreOne.toString(),
                     ContextCompat.getColor(context,
                         R.color.greenGreyWritings), 48f)
@@ -216,8 +227,10 @@ class DrawGraph(context: Context): View(context) {
                     ContextCompat.getColor(context,
                         R.color.greenGreyWritings), 48f)
             }else if(index == 4){
-                canvas.drawCircle(realX-40, realY-padding, 20f, dataPointFiveFillPaint)
-                canvas.drawCircle(realX-40, realY-padding, 35f, dataPointFiveStrokePaint)
+                canvas.drawCircle(realX-40, realY-padding, 20f,
+                    dataPointFiveFillPaint)
+                canvas.drawCircle(realX-40, realY-padding, 35f,
+                    dataPointFiveStrokePaint)
                 drawText(canvas,realX-70,realY-50, scoreFive.toString(),
                     ContextCompat.getColor(context,
                         R.color.white), 54f)
@@ -225,7 +238,8 @@ class DrawGraph(context: Context): View(context) {
         }
     }
 
-    fun drawCurvedArrow(x1:Float, y1:Float, x2:Float, y2:Float, curveRadius:Int, lineWidth:Float, canvas: Canvas) {
+    fun drawCurvedArrow(x1:Float, y1:Float, x2:Float, y2:Float, curveRadius:Int,
+                        lineWidth:Float, canvas: Canvas) {
         val paint = Paint()
         paint.isAntiAlias = true
         paint.style = Paint.Style.STROKE
