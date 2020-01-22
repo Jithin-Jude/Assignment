@@ -5,6 +5,7 @@ import android.graphics.*
 import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 
 
 /**
@@ -167,19 +168,29 @@ class DrawGraph(context: Context): View(context) {
 
             if(index == 0){
                 canvas.drawCircle(realX, realY, 20f, dataPointOneFillPaint)
-                drawText(canvas,realX-20,realY-70, "10")
+                drawText(canvas,realX-20,realY-70, "10",
+                    ContextCompat.getColor(context,
+                        R.color.greenGreyWritings))
             }else if(index == 1){
                 canvas.drawCircle(realX, realY, 20f, dataPointTwoFillPaint)
-                drawText(canvas,realX-20,realY-70, "20")
+                drawText(canvas,realX-20,realY-70, "20",
+                    ContextCompat.getColor(context,
+                        R.color.greenGreyWritings))
             }else if(index == 2){
                 canvas.drawCircle(realX, realY, 20f, dataPointThreeFillPaint)
-                drawText(canvas,realX-20,realY-70, "30")
+                drawText(canvas,realX-20,realY-70, "30",
+                    ContextCompat.getColor(context,
+                        R.color.greenGreyWritings))
             }else if(index == 3){
                 canvas.drawCircle(realX, realY, 20f, dataPointFourFillPaint)
-                drawText(canvas,realX-20,realY-70, "40")
+                drawText(canvas,realX-20,realY-70, "40",
+                    ContextCompat.getColor(context,
+                        R.color.greenGreyWritings))
             }else if(index == 4){
                 canvas.drawCircle(realX, realY, 20f, dataPointFiveFillPaint)
-                drawText(canvas,realX-20,realY-70, "80")
+                drawText(canvas,realX-20,realY-70, "80",
+                    ContextCompat.getColor(context,
+                        R.color.white))
             }
         }
 
@@ -208,9 +219,13 @@ class DrawGraph(context: Context): View(context) {
         canvas.drawPath(path, paint)
     }
 
-    fun drawText(canvas: Canvas, x: Float, y: Float, text: String){
+    fun drawText(canvas: Canvas, x: Float, y: Float, text: String, color: Int){
+
+        val customTypeface = ResourcesCompat.getFont(context, R.font.nunito_black)
+
         val paint = Paint()
-        paint.color = Color.WHITE
+        paint.color = color
+        paint.typeface = customTypeface
         paint.setTextSize(48f)
         canvas.drawText(text, x, y, paint)
     }
