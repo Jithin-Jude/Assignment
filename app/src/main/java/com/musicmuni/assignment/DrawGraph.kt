@@ -21,6 +21,7 @@ class DrawGraph(context: Context): View(context) {
     var scoreFour = 0
     var scoreFive = 0
 
+    // Used to keep edges of all objects inside canvas.
     private val padding = 20
 
     private val dataSet = mutableListOf<DataPoint>()
@@ -44,6 +45,7 @@ class DrawGraph(context: Context): View(context) {
         isAntiAlias = true
     }
 
+    // Set gradient color objects for drawing each point
     override fun onSizeChanged(w: Int, h: Int, oldW: Int, oldH: Int) {
 
         val colorsPointOne = intArrayOf(
@@ -169,6 +171,7 @@ class DrawGraph(context: Context): View(context) {
                 //Log.d("FINAL_VALUE","FINAL VALUE====================
                 // ================: "+startY+","+endY)
 
+                //Gives a down curve when previous score is less-than current score.
                 if(1000-startY < 1000-endY){
                     if(index == 0){
                         drawCurvedArrow(startX+padding, startY-padding, endX,
@@ -180,6 +183,8 @@ class DrawGraph(context: Context): View(context) {
                         drawCurvedArrow(startX, startY-padding, endX, endY-padding,
                             -30,6f,canvas)
                     }
+
+                    //Gives a up curve when previous score is greater-than current score.
                 }else if(1000-startY > 1000-endY){
                     if(index == 0){
                         drawCurvedArrow(startX+padding, startY-padding, endX,
@@ -191,6 +196,7 @@ class DrawGraph(context: Context): View(context) {
                         drawCurvedArrow(startX, startY-padding, endX, endY-padding,
                             30,6f,canvas)
                     }
+                    //Gives a straight line when previous score is equal current score.
                 }else{
                     if(index == 0){
                         canvas.drawLine(startX+padding, startY-padding, endX,
@@ -205,6 +211,7 @@ class DrawGraph(context: Context): View(context) {
                 }
             }
 
+            //Separate circle drawing configs for five different score points.
             if(index == 0){
                 canvas.drawCircle(realX+padding, realY-padding, 20f,
                     dataPointOneFillPaint)
