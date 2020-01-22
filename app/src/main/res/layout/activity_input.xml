@@ -9,8 +9,8 @@
 
     <EditText
         android:id="@+id/scoreOne"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/textbox_size"
+        android:layout_height="@dimen/textbox_size"
         android:ems="10"
         android:hint="@string/score_one"
         android:inputType="numberDecimal"
@@ -24,8 +24,8 @@
 
     <EditText
         android:id="@+id/scoreTwo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/textbox_size"
+        android:layout_height="@dimen/textbox_size"
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="@string/score_two"
@@ -40,8 +40,8 @@
 
     <EditText
         android:id="@+id/scoreThree"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/textbox_size"
+        android:layout_height="@dimen/textbox_size"
         android:ems="10"
         android:hint="@string/score_three"
         android:inputType="numberDecimal"
@@ -56,8 +56,8 @@
 
     <EditText
         android:id="@+id/scoreFour"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/textbox_size"
+        android:layout_height="@dimen/textbox_size"
         android:layout_marginStart="32dp"
         android:ems="10"
         android:hint="@string/score_four"
@@ -72,8 +72,8 @@
 
     <EditText
         android:id="@+id/scoreFive"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/textbox_size"
+        android:layout_height="@dimen/textbox_size"
         android:ems="10"
         android:hint="@string/score_five"
         android:inputType="numberDecimal"
@@ -89,7 +89,7 @@
 
     <Button
         android:id="@+id/btnShowGraph"
-        android:layout_width="150dp"
+        android:layout_width="@dimen/btn_width"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
         android:background="@drawable/custom_stroke_button"
