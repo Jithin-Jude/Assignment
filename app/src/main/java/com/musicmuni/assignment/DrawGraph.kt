@@ -176,27 +176,27 @@ class DrawGraph(context: Context): View(context) {
 
                 if(1000-startY < 1000-endY){
                     if(index == 0){
-                        drawCurvedArrow(startX+padding, startY-padding, endX, endY, -30,6f,canvas)
+                        drawCurvedArrow(startX+padding, startY-padding, endX, endY-padding, -30,6f,canvas)
                     }else if(index == 3){
-                        drawCurvedArrow(startX, startY, endX-40, endY+padding, -30,6f,canvas)
+                        drawCurvedArrow(startX, startY-padding, endX-40, endY-padding, -30,6f,canvas)
                     } else{
-                        drawCurvedArrow(startX, startY, endX, endY, -30,6f,canvas)
+                        drawCurvedArrow(startX, startY-padding, endX, endY-padding, -30,6f,canvas)
                     }
                 }else if(1000-startY > 1000-endY){
                     if(index == 0){
-                        drawCurvedArrow(startX+padding, startY-padding, endX, endY, 30,6f,canvas)
+                        drawCurvedArrow(startX+padding, startY-padding, endX, endY-padding, 30,6f,canvas)
                     }else if(index == 4){
-                        drawCurvedArrow(startX, startY, endX+padding, endY-padding, 30,6f,canvas)
+                        drawCurvedArrow(startX, startY-padding, endX+padding, endY-padding, 30,6f,canvas)
                     } else{
-                        drawCurvedArrow(startX, startY, endX, endY, 30,6f,canvas)
+                        drawCurvedArrow(startX, startY-padding, endX, endY-padding, 30,6f,canvas)
                     }
                 }else{
                     if(index == 0){
-                        canvas.drawLine(startX+padding, startY-padding, endX, endY, dataPointLinePaint)
+                        canvas.drawLine(startX+padding, startY-padding, endX, endY-padding, dataPointLinePaint)
                     }else if(index == 4){
-                        canvas.drawLine(startX, startY, endX+padding, endY-padding, dataPointLinePaint)
+                        canvas.drawLine(startX, startY-padding, endX+padding, endY-padding, dataPointLinePaint)
                     } else{
-                        canvas.drawLine(startX, startY, endX, endY, dataPointLinePaint)
+                        canvas.drawLine(startX, startY-padding, endX, endY-padding, dataPointLinePaint)
                     }
                 }
             }
@@ -207,23 +207,23 @@ class DrawGraph(context: Context): View(context) {
                     ContextCompat.getColor(context,
                         R.color.greenGreyWritings), 48f)
             }else if(index == 1){
-                canvas.drawCircle(realX, realY, 20f, dataPointTwoFillPaint)
+                canvas.drawCircle(realX, realY-padding, 20f, dataPointTwoFillPaint)
                 drawText(canvas,realX-padding,realY-70, scoreTwo.toString(),
                     ContextCompat.getColor(context,
                         R.color.greenGreyWritings), 48f)
             }else if(index == 2){
-                canvas.drawCircle(realX, realY, 20f, dataPointThreeFillPaint)
+                canvas.drawCircle(realX, realY-padding, 20f, dataPointThreeFillPaint)
                 drawText(canvas,realX-padding,realY-70, scoreThree.toString(),
                     ContextCompat.getColor(context,
                         R.color.greenGreyWritings), 48f)
             }else if(index == 3){
-                canvas.drawCircle(realX, realY, 20f, dataPointFourFillPaint)
+                canvas.drawCircle(realX, realY-padding, 20f, dataPointFourFillPaint)
                 drawText(canvas,realX-padding,realY-70, scoreFour.toString(),
                     ContextCompat.getColor(context,
                         R.color.greenGreyWritings), 48f)
             }else if(index == 4){
-                canvas.drawCircle(realX-40, realY+20, 20f, dataPointFiveFillPaint)
-                canvas.drawCircle(realX-40, realY+20, 35f, dataPointFiveStrokePaint)
+                canvas.drawCircle(realX-40, realY-padding, 20f, dataPointFiveFillPaint)
+                canvas.drawCircle(realX-40, realY-padding, 35f, dataPointFiveStrokePaint)
                 drawText(canvas,realX-70,realY-50, scoreFive.toString(),
                     ContextCompat.getColor(context,
                         R.color.white), 54f)
