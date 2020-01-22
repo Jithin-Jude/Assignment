@@ -158,17 +158,35 @@ class DrawGraph(context: Context): View(context) {
                 Log.d("FINAL_VALUE","FINAL VALUE====================================: "+startY+","+endY)
 
                 if(1000-startY < 1000-endY){
-                    drawCurvedArrow(startX, startY, endX, endY, -30,6f,canvas)
+                    if(index == 0){
+                        drawCurvedArrow(startX+20, startY-20, endX, endY, -30,6f,canvas)
+                    }else if(index == 3){
+                        drawCurvedArrow(startX, startY, endX-20, endY+20, -30,6f,canvas)
+                    } else{
+                        drawCurvedArrow(startX, startY, endX, endY, -30,6f,canvas)
+                    }
                 }else if(1000-startY > 1000-endY){
-                    drawCurvedArrow(startX, startY, endX, endY, 30,6f,canvas)
+                    if(index == 0){
+                        drawCurvedArrow(startX+20, startY-20, endX, endY, 30,6f,canvas)
+                    }else if(index == 4){
+                        drawCurvedArrow(startX, startY, endX+20, endY-20, 30,6f,canvas)
+                    } else{
+                        drawCurvedArrow(startX, startY, endX, endY, 30,6f,canvas)
+                    }
                 }else{
-                    canvas.drawLine(startX, startY, endX, endY, dataPointLinePaint)
+                    if(index == 0){
+                        canvas.drawLine(startX+20, startY-20, endX, endY, dataPointLinePaint)
+                    }else if(index == 4){
+                        canvas.drawLine(startX, startY, endX+20, endY-20, dataPointLinePaint)
+                    } else{
+                        canvas.drawLine(startX, startY, endX, endY, dataPointLinePaint)
+                    }
                 }
             }
 
             if(index == 0){
-                canvas.drawCircle(realX, realY, 20f, dataPointOneFillPaint)
-                drawText(canvas,realX-20,realY-70, "10",
+                canvas.drawCircle(realX+20, realY-20, 20f, dataPointOneFillPaint)
+                drawText(canvas,realX,realY-70, "10",
                     ContextCompat.getColor(context,
                         R.color.greenGreyWritings))
             }else if(index == 1){
@@ -187,8 +205,8 @@ class DrawGraph(context: Context): View(context) {
                     ContextCompat.getColor(context,
                         R.color.greenGreyWritings))
             }else if(index == 4){
-                canvas.drawCircle(realX, realY, 20f, dataPointFiveFillPaint)
-                drawText(canvas,realX-20,realY-70, "80",
+                canvas.drawCircle(realX-20, realY+20, 20f, dataPointFiveFillPaint)
+                drawText(canvas,realX-60,realY-30, "80",
                     ContextCompat.getColor(context,
                         R.color.white))
             }
