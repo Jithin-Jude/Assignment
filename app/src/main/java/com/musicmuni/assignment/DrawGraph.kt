@@ -29,12 +29,6 @@ class DrawGraph(context: Context): View(context) {
     private var yMin = 0
     private var yMax = 0
 
-    private val dataPointPaint = Paint().apply {
-        color = Color.BLUE
-        strokeWidth = 7f
-        style = Paint.Style.STROKE
-    }
-
     private val positions = null
 
     private var dataPointOneFillPaint = Paint()
@@ -172,7 +166,7 @@ class DrawGraph(context: Context): View(context) {
                 val endX = nextDataPoint.xVal.toRealX()
                 val endY = nextDataPoint.yVal.toRealY()
 
-                Log.d("FINAL_VALUE","FINAL VALUE====================================: "+startY+","+endY)
+                //Log.d("FINAL_VALUE","FINAL VALUE====================================: "+startY+","+endY)
 
                 if(1000-startY < 1000-endY){
                     if(index == 0){
@@ -233,16 +227,15 @@ class DrawGraph(context: Context): View(context) {
 
     fun drawCurvedArrow(x1:Float, y1:Float, x2:Float, y2:Float, curveRadius:Int, lineWidth:Float, canvas: Canvas) {
         val paint = Paint()
-        paint.setAntiAlias(true)
-        paint.setStyle(Paint.Style.STROKE)
-        paint.setStrokeWidth(lineWidth)
-        paint.setColor(ContextCompat.getColor(context,
-            R.color.pathColor))
+        paint.isAntiAlias = true
+        paint.style = Paint.Style.STROKE
+        paint.strokeWidth = lineWidth
+        paint.color = ContextCompat.getColor(context, R.color.pathColor)
         val path = Path()
         val midX = x1 + ((x2 - x1) / 2)
         val midY = y1 + ((y2 - y1) / 2)
-        val xDiff = (midX - x1).toFloat()
-        val yDiff = (midY - y1).toFloat()
+        val xDiff = (midX - x1)
+        val yDiff = (midY - y1)
         val angle = (Math.atan2(yDiff.toDouble(), xDiff.toDouble()) * (180 / Math.PI)) - 90
         val angleRadians = Math.toRadians(angle)
         val pointX = (midX + curveRadius * Math.cos(angleRadians)).toFloat()
@@ -259,17 +252,17 @@ class DrawGraph(context: Context): View(context) {
         val paint = Paint()
         paint.color = color
         paint.typeface = customTypeface
-        paint.setTextSize(textSize)
+        paint.textSize = textSize
         canvas.drawText(text, x, y, paint)
     }
 
     fun setData(newDataSet: List<DataPoint>) {
 
 
-        for (item in newDataSet){
+/*        for (item in newDataSet){
             Log.d("GENERATED_VALUE","GENERATED VALUE===========" +
                     "=========================: "+item.xVal+","+item.yVal)
-        }
+        }*/
 
         scoreOne = 100 - newDataSet[0].yVal
         scoreTwo = 100 - newDataSet[1].yVal
