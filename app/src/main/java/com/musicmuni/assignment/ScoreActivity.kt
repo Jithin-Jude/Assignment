@@ -16,16 +16,16 @@ class ScoreActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-        val myView = GridView(this)
-        graphBackground.addView(myView)
+        val gridLines = GridView(this)
+        graphBackground.addView(gridLines)
 
 
-        val myViewTest = DrawGraph(this)
-        myViewTest.setData(generateRandomDataPoints())
-        graphView.addView(myViewTest)
+        val graph = DrawGraph(this)
+        graph.setData(getDataPoints())
+        graphView.addView(graph)
     }
 
-    private fun generateRandomDataPoints(): List<DataPoint> {
+    private fun getDataPoints(): List<DataPoint> {
 
         val list = listOf(100-10, 100-20, 100-30, 100-40, 100-80)
 

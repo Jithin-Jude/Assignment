@@ -19,7 +19,7 @@ import androidx.annotation.Nullable
 class GridView @JvmOverloads constructor(@NonNull context: Context):
     View(context) {
     //number of row and column
-    internal var horizontalGridCount = 40
+    internal var horizontalGridCount = 60
     private val horiz:Drawable
     private val vert: Drawable
     private var width:Float = 0.toFloat()
