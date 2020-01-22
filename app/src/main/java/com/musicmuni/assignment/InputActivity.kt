@@ -10,11 +10,11 @@ import kotlinx.android.synthetic.main.activity_input.*
 
 class InputActivity : AppCompatActivity() {
 
-    var scoreOneText = ""
-    var scoreTwoText = ""
-    var scoreThreeText = ""
-    var scoreFourText = ""
-    var scoreFiveText = ""
+    var scoreOneText = "0"
+    var scoreTwoText = "0"
+    var scoreThreeText = "0"
+    var scoreFourText = "0"
+    var scoreFiveText = "0"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,11 +30,11 @@ class InputActivity : AppCompatActivity() {
     }
 
     fun showGraph(){
-        scoreOneText = scoreOne.text.toString()
-        scoreTwoText = scoreTwo.text.toString()
-        scoreThreeText = scoreThree.text.toString()
-        scoreFourText = scoreFour.text.toString()
-        scoreFiveText = scoreFive.text.toString()
+        scoreOneText = if ( scoreOne.text.toString() == "" ) "0" else scoreOne.text.toString()
+        scoreTwoText = if ( scoreTwo.text.toString() == "" ) "0" else scoreTwo.text.toString()
+        scoreThreeText = if ( scoreThree.text.toString() == "" ) "0" else scoreThree.text.toString()
+        scoreFourText = if ( scoreFour.text.toString() == "" ) "0" else scoreFour.text.toString()
+        scoreFiveText = if ( scoreFive.text.toString() == "" ) "0" else scoreFive.text.toString()
 
         if(validate()){
             val intent = Intent(this,ScoreActivity::class.java)
@@ -48,8 +48,8 @@ class InputActivity : AppCompatActivity() {
     }
 
     fun validate():Boolean{
-        if(scoreOneText == "" || scoreTwoText == "" || scoreThreeText == ""
-            || scoreFourText == "" || scoreFiveText == ""){
+        if(scoreOneText == "0" && scoreTwoText == "0" && scoreThreeText == "0"
+            && scoreFourText == "0" && scoreFiveText == "0"){
             Toast.makeText(this, "Empty Input.", Toast.LENGTH_SHORT).show()
             return false
         }else if(scoreOneText.toInt() > 100 || scoreTwoText.toInt() > 100
