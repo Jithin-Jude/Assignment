@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_score.*
 
 class ScoreActivity : AppCompatActivity() {
 
@@ -21,7 +21,7 @@ class ScoreActivity : AppCompatActivity() {
         this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager
             .LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_score)
 
         scoreOne = intent.getStringExtra("score_one")!!.toInt()
         scoreTwo = intent.getStringExtra("score_two")!!.toInt()
