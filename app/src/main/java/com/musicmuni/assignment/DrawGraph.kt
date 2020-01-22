@@ -36,16 +36,12 @@ class DrawGraph(context: Context): View(context) {
     private val dataPointThreeFillPaint = Paint()
     private val dataPointFourFillPaint = Paint()
     private val dataPointFiveFillPaint = Paint()
+    private val dataPointFiveStrokePaint = Paint()
 
     private val dataPointLinePaint = Paint().apply {
         color = Color.parseColor("#b7b7b2")
         strokeWidth = 7f
         isAntiAlias = true
-    }
-
-    private val axisLinePaint = Paint().apply {
-        color = Color.RED
-        strokeWidth = 10f
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldW: Int, oldH: Int) {
@@ -141,6 +137,18 @@ class DrawGraph(context: Context): View(context) {
             positions,
             Shader.TileMode.MIRROR
         )
+
+        dataPointFiveStrokePaint.shader = LinearGradient(
+            0f,
+            0f,
+            0f,
+            height.toFloat(),
+            colorsPointFive,
+            positions,
+            Shader.TileMode.MIRROR
+        )
+        dataPointFiveStrokePaint.strokeWidth = 7f
+        dataPointFiveStrokePaint.style = Paint.Style.STROKE
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -163,7 +171,7 @@ class DrawGraph(context: Context): View(context) {
                     if(index == 0){
                         drawCurvedArrow(startX+padding, startY-padding, endX, endY, -30,6f,canvas)
                     }else if(index == 3){
-                        drawCurvedArrow(startX, startY, endX-padding, endY+padding, -30,6f,canvas)
+                        drawCurvedArrow(startX, startY, endX-40, endY+padding, -30,6f,canvas)
                     } else{
                         drawCurvedArrow(startX, startY, endX, endY, -30,6f,canvas)
                     }
@@ -207,15 +215,13 @@ class DrawGraph(context: Context): View(context) {
                     ContextCompat.getColor(context,
                         R.color.greenGreyWritings))
             }else if(index == 4){
-                canvas.drawCircle(realX-padding, realY+20, 20f, dataPointFiveFillPaint)
-                drawText(canvas,realX-60,realY-30, "80",
+                canvas.drawCircle(realX-40, realY+20, 20f, dataPointFiveFillPaint)
+                canvas.drawCircle(realX-40, realY+20, 35f, dataPointFiveStrokePaint)
+                drawText(canvas,realX-60,realY-50, "80",
                     ContextCompat.getColor(context,
                         R.color.white))
             }
         }
-
-        //canvas.drawLine(0f, 0f, 0f, height.toFloat(), axisLinePaint)
-        //canvas.drawLine(0f, height.toFloat(), width.toFloat(), height.toFloat(), axisLinePaint)
     }
 
     fun drawCurvedArrow(x1:Float, y1:Float, x2:Float, y2:Float, curveRadius:Int, lineWidth:Float, canvas: Canvas) {
