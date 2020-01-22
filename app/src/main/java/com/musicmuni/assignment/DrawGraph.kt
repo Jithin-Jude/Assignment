@@ -31,12 +31,12 @@ class DrawGraph(context: Context): View(context) {
 
     private val positions = null
 
-    private val dataPointOneFillPaint = Paint()
-    private val dataPointTwoFillPaint = Paint()
-    private val dataPointThreeFillPaint = Paint()
-    private val dataPointFourFillPaint = Paint()
-    private val dataPointFiveFillPaint = Paint()
-    private val dataPointFiveStrokePaint = Paint()
+    private var dataPointOneFillPaint = Paint()
+    private var dataPointTwoFillPaint = Paint()
+    private var dataPointThreeFillPaint = Paint()
+    private var dataPointFourFillPaint = Paint()
+    private var dataPointFiveFillPaint = Paint()
+    private var dataPointFiveStrokePaint = Paint()
 
     private val dataPointLinePaint = Paint().apply {
         color = Color.parseColor("#b7b7b2")
@@ -48,12 +48,13 @@ class DrawGraph(context: Context): View(context) {
 
         val colorsPointOne = intArrayOf(
             ContextCompat.getColor(context,
-                R.color.ptOneColorOne),
+                R.color.ptOneColorThree),
             ContextCompat.getColor(context,
                 R.color.ptOneColorTwo),
             ContextCompat.getColor(context,
-                R.color.ptOneColorThree))
+                R.color.ptOneColorOne))
 
+        dataPointOneFillPaint.isDither = true
         dataPointOneFillPaint.shader = LinearGradient(
             0f,
             0f,
@@ -66,13 +67,13 @@ class DrawGraph(context: Context): View(context) {
 
         val colorsPointTwo = intArrayOf(
             ContextCompat.getColor(context,
-                R.color.ptTwoColorOne),
-            ContextCompat.getColor(context,
-                R.color.ptTwoColorTwo),
+                R.color.ptTwoColorFour),
             ContextCompat.getColor(context,
                 R.color.ptTwoColorThree),
             ContextCompat.getColor(context,
-                R.color.ptTwoColorFour))
+                R.color.ptTwoColorTwo),
+            ContextCompat.getColor(context,
+                R.color.ptTwoColorOne))
 
         dataPointTwoFillPaint.shader = LinearGradient(
             0f,
@@ -86,11 +87,11 @@ class DrawGraph(context: Context): View(context) {
 
         val colorsPointThree = intArrayOf(
             ContextCompat.getColor(context,
-                R.color.ptThreeColorOne),
+                R.color.ptThreeColorThree),
             ContextCompat.getColor(context,
                 R.color.ptThreeColorTwo),
             ContextCompat.getColor(context,
-                R.color.ptThreeColorThree))
+                R.color.ptThreeColorOne))
 
         dataPointThreeFillPaint.shader = LinearGradient(
             0f,
@@ -104,11 +105,11 @@ class DrawGraph(context: Context): View(context) {
 
         val colorsPointFour = intArrayOf(
             ContextCompat.getColor(context,
-                R.color.ptFourColorOne),
+                R.color.ptFourColorThree),
             ContextCompat.getColor(context,
                 R.color.ptFourColorTwo),
             ContextCompat.getColor(context,
-                R.color.ptFourColorThree))
+                R.color.ptFourColorOne))
 
         dataPointFourFillPaint.shader = LinearGradient(
             0f,
@@ -122,11 +123,11 @@ class DrawGraph(context: Context): View(context) {
 
         val colorsPointFive = intArrayOf(
             ContextCompat.getColor(context,
-                R.color.ptFiveColorOne),
+                R.color.ptFiveColorThree),
             ContextCompat.getColor(context,
                 R.color.ptFiveColorTwo),
             ContextCompat.getColor(context,
-                R.color.ptFiveColorThree))
+                R.color.ptFiveColorOne))
 
         dataPointFiveFillPaint.shader = LinearGradient(
             0f,
